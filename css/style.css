@@ -1,0 +1,118 @@
+/* General settings */
+
+*,*::before,*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 0;
+}
+.page{
+    background-color: #cecaca1e;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: #1f1010;
+    display: grid;
+    grid-template-areas:
+    "header header header "
+    "aside main main "
+    "aside main main ";
+  grid-template-rows: 60px;
+  grid-template-columns: 80px;
+  width: 100%;
+  height: 100vh;
+}
+.btn{
+    background: none;
+    padding: 3.5px;
+}
+.btn:hover{
+    background: rgba(249, 248, 248,0.2); 
+}
+
+/* Header */
+
+.header{
+    grid-area: header;
+    background-color: #6faa60;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.book{
+    color: #ffffff;
+}
+.header_form-search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-search_btn-submit{
+    background: rgb(249, 248, 248);
+    transition: linear 0.3s;
+    display: inline-block;
+    position: relative;
+    border-bottom-right-radius: 90px;
+    border-top-right-radius: 90px;
+}
+.form-search_input{
+    height: 30px;
+    padding: 5px;
+    border-top-left-radius: 90px;
+    border-bottom-left-radius: 90px;
+    background: rgb(249, 248, 248);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+.form-search_icon{
+    width: 20px;
+}
+
+/* Aside */
+
+.aside{
+    grid-area: aside;
+    background-color: #6faa60;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+}
+.aside_menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu_item{
+    list-style: none;
+    margin-bottom: 20px;
+}
+.menu_button{
+    transition: linear 0.3s;
+    display: inline-block;
+    position: relative;
+    border-radius: 100%;
+}
+.menu_button:hover::after{
+    content: attr(data-title);
+    position: absolute;
+    left: 80%; top: 40%;
+    z-index: 1;
+    background: rgba(249, 248, 248,0.9);
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    transition: linear 2s;
+}
+.menu_icon{
+    width: 30px;
+    height: 30px;
+}
+
+/* Main */
+
+.main{
+    grid-area: main;
+}
