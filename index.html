@@ -15,8 +15,8 @@
             <button class="form-search_btn-submit btn" type="submit"><img class="form-search_icon" src="img/search.svg" alt="иконка поиска"></button>
         </form>
     </header>
-    <aside class="aside">
-        <ul class="aside_menu">
+    <aside class="aside-left">
+        <ul class="aside-left_menu list">
             <li class="menu_item">
                 <button type="button" class="menu_button btn" data-title="Добавить новую запись">
                     <img src="img/plus.svg" alt="плюс" class="menu_icon">
@@ -34,7 +34,23 @@
             </li>
         </ul>
     </aside>
-    <main class="main"></main>
+    <main class="main">
+        <label for="">
+            <h2>Название заметки</h2>
+            <input type="text" class="main_note-title">
+        </label>
+        <label for="">
+            <h2>Текст заметки</h2>
+            <textarea class="main_textarea"></textarea>
+        </label>
+        <button class="main_btn">
+            Сохранить
+        </button>
+    </main>
+    <aside class="aside-right">
+        <ul class="aside-right_list list">
+        </ul>
+    </aside>
     <script src="script/script.js"></script>
 </body>
 </html>

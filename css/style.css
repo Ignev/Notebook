@@ -13,9 +13,10 @@
     color: #1f1010;
     display: grid;
     grid-template-areas:
-    "header header header "
-    "aside main main "
-    "aside main main ";
+    "header header header header header"
+    "aside-left main main main aside-right"
+    "aside-left main main main aside-right"
+    "aside-left main main main aside-right";
   grid-template-rows: 60px;
   grid-template-columns: 80px;
   width: 100%;
@@ -28,7 +29,12 @@
 .btn:hover{
     background: rgba(249, 248, 248,0.2); 
 }
-
+.list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
 /* Header */
 
 .header{
@@ -68,21 +74,15 @@
     width: 20px;
 }
 
-/* Aside */
+/* aside-left */
 
-.aside{
-    grid-area: aside;
+.aside-left{
+    grid-area: aside-left;
     background-color: #6faa60;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding-top: 40px;
-}
-.aside_menu{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
 }
 .menu_item{
     list-style: none;
@@ -115,4 +115,45 @@
 
 .main{
     grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main>label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.main_textarea{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding: 5px;
+
+}
+.main_note-title{
+    height: 20px;
+    margin-top: 10px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+/* Aside-right */
+
+.aside-right{
+    grid-area: aside-right;
+    background: rgb(175, 204, 184);
+    padding: 10px;
+    min-width: 40%;
+    transition: linear 0.5s;
+}
+.list_item{
+    list-style: none;
+    margin-bottom: 10px;
+}
+.main_btn{
+    background: none;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
 }
