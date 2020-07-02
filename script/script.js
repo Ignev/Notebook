@@ -2,7 +2,7 @@
 
 window.addEventListener("DOMContentLoaded", () => {
     
-    let notes = [],
+    let notes = {},
         editing = false,
         curNum,
         curNote;
@@ -18,14 +18,13 @@ window.addEventListener("DOMContentLoaded", () => {
     recordSelection = () => {
         list.addEventListener('click', event => {
             let num = event.target.dataset.num;
+            if(event.target.classList.contains('list_button')){
+                event.target.classList.add("action");
+            }   
             noteText.value = notes[num].text;
             noteName.value = notes[num].name;
             curNum = num;
             curNote = event.target;
-            console.log(curNum);
-            console.log(curNote);
-
-            
             editing = true;
         });
     },
@@ -40,8 +39,20 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         noteText.value = " ";
         noteName.value = " ";
+        curNote.classList.remove('action');
         curNum = '';
         curNote = '';
+    },
+    deleteNote = () =>{
+        list.addEventListener('contextmenu', event => {
+            event.preventDefault();
+            let num = event.target.dataset.num;
+            delete notes[num];
+            event.target.parentNode.remove();
+            noteText.value = " ";
+            noteName.value = " ";
+            editing = false;
+        });
     },
     addData = () => {
             let date = new Date,
@@ -52,7 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
             addZero(date.getDate()) + '.' +
             addZero(date.getMonth() + 1) + '.' +
             date.getFullYear();
-            notes.push({text: noteText.value, name: noteName.value, time: now});
+            notes[noteName.value] = {text: noteText.value, name: noteName.value, time: now};
             const listItem   = document.createElement('li'),
                 buttonItem = document.createElement('button');
             if(noteName.value === " "){
@@ -62,7 +73,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 buttonItem.innerHTML = noteName.value;
             }
             buttonItem.classList.add('list_button');
-            buttonItem.dataset.num = notes.length - 1;
+            buttonItem.dataset.num = noteName.value;
             listItem.appendChild(buttonItem);
             listItem.classList.add('list_item');
             list.appendChild(listItem);
@@ -92,7 +103,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
     }; // Сохранение записей
-    // console.log(curNote);
     trackingSave();
     recordSelection();
+    deleteNote();
 });
